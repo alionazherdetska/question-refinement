@@ -5,7 +5,6 @@ import StationControls from '../StationControls';
 import { StationProps } from '../../types';
 
 const SpellcheckStation: React.FC<StationProps> = ({ 
-  questionData, 
   updateQuestionData, 
   onNext, 
   onBack, 

@@ -8,7 +8,6 @@ import { StationProps } from '../../types';
 const GranularityStation: React.FC<StationProps> = ({ 
   questionData, 
   updateQuestionData, 
-  onNext, 
   onBack, 
   onSkip, 
   canProceed,
