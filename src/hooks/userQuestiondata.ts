@@ -13,6 +13,8 @@ export const useQuestionData = (): UseQuestionDataReturn => {
     correctedQuestion: "Why is mercury liquid at room temperature?",
     spellcheckAccepted: false,
     isDifferent: false,
+    selectedExpertId: undefined,
+    expertSelected: false,
     selectedAreas: [],
     motivation: '',
     otherMotivation: '',
@@ -25,12 +27,21 @@ export const useQuestionData = (): UseQuestionDataReturn => {
 
   const canProceed = (currentStation: number): boolean => {
     switch (currentStation) {
-      case 1: return questionData.spellcheckAccepted;
-      case 2: return questionData.isDifferent;
-      case 3: return questionData.selectedAreas.length > 0;
-      case 4: return questionData.motivation !== '';
-      case 5: return true;
-      default: return false;
+      case 1: // Spellcheck
+        return questionData.spellcheckAccepted;
+      case 2: // Already Answered
+        return questionData.isDifferent;
+      case 3: // Expert Selection
+        return questionData.expertSelected && !!questionData.selectedExpertId;
+      case 4: // Knowledge Areas
+        return questionData.selectedAreas.length > 0;
+      case 5: // Motivation
+        return questionData.motivation !== '' && 
+               (questionData.motivation !== 'other' || !!questionData.otherMotivation);
+      case 6: // Granularity
+        return true;
+      default: 
+        return false;
     }
   };
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import ProgressBar from './ProgressBar';
 import AlreadyAnsweredStation from './stations/AlreadyAnsweredStation';
+import ExpertSelectionStation from './stations/ExpertSelectionStation';
 import KnowledgeAreasStation from './stations/KnowledgeAreasStation';
 import MotivationStation from './stations/MotivationStation';
 import GranularityStation from './stations/GranularityStation';
@@ -13,7 +14,7 @@ const QuestionRefinementApp: React.FC = () => {
   const { questionData, updateQuestionData, canProceed } = useQuestionData();
 
   const nextStation = (): void => {
-    if (currentStation < 5 && canProceed(currentStation)) {
+    if (currentStation < 6 && canProceed(currentStation)) {
       setCurrentStation(prev => prev + 1);
     }
   };
@@ -45,10 +46,12 @@ const QuestionRefinementApp: React.FC = () => {
       case 2:
         return <AlreadyAnsweredStation {...commonProps} />;
       case 3:
-        return <KnowledgeAreasStation {...commonProps} />;
+        return <ExpertSelectionStation {...commonProps} />;
       case 4:
-        return <MotivationStation {...commonProps} />;
+        return <KnowledgeAreasStation {...commonProps} />;
       case 5:
+        return <MotivationStation {...commonProps} />;
+      case 6:
         return <GranularityStation {...commonProps} />;
       default:
         return <SpellcheckStation {...commonProps} />;
@@ -59,7 +62,7 @@ const QuestionRefinementApp: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <div className="max-w-4xl mx-auto px-8 pb-12">
+      <div className="max-w-4xl mx-auto pb-12">
         <ProgressBar currentStation={currentStation} />
         {renderCurrentStation()}
       </div>

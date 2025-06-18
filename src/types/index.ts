@@ -1,30 +1,14 @@
-import { LucideIcon } from 'lucide-react';
-
 export interface QuestionData {
   originalQuestion: string;
   correctedQuestion: string;
   spellcheckAccepted: boolean;
   isDifferent: boolean;
+  selectedExpertId?: string;
+  expertSelected: boolean;
   selectedAreas: string[];
   motivation: string;
   otherMotivation?: string;
   granularity: number;
-}
-
-export interface Station {
-  id: number;
-  label: string;
-  icon: LucideIcon | string;
-}
-
-export interface SimilarQuestion {
-  title: string;
-  answer: string;
-}
-
-export interface MotivationOption {
-  value: string;
-  label: string;
 }
 
 export interface StationProps {
@@ -46,11 +30,22 @@ export interface StationControlsProps {
   isLastStation?: boolean;
 }
 
+export interface ProgressBarProps {
+  currentStation: number;
+}
+
 export interface QuestionDisplayProps {
   question: string;
   highlight?: boolean;
 }
 
-export interface ProgressBarProps {
-  currentStation: number;
+export interface ExpertProfile {
+  id: string;
+  name: string;
+  title: string;
+  institution: string;
+  avatar: string;
+  bio: string;
+  specializations: string[];
+  relevantKeywords: string[];
 }
