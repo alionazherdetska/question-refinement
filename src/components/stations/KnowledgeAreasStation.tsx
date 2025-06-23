@@ -63,9 +63,6 @@ const KnowledgeAreasStation: React.FC<StationProps> = ({
           <p className="text-black text-s">
             • AI automatically tags and classifies topics in backend
           </p>
-          <p className="text-black text-s">
-            • Future: Use topics to improve question or prompt user for specificity
-          </p>
         </div>
       </div>
 
@@ -77,7 +74,7 @@ const KnowledgeAreasStation: React.FC<StationProps> = ({
           </div>
           <div className="flex items-center gap-3 mb-2">
             <Lightbulb className="text-amber-600" size={16} />
-            <strong className="text-amber-800">Future Enhancement Preview</strong>
+            <strong className="text-amber-800">Enhancement Preview</strong>
           </div>
           <p className="text-amber-700 text-sm pb-2">
             "Based on your selected topics, would you like to make your question more specific?
